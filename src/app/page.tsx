@@ -1,16 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Star,
-  Plus,
-  Home,
-  Search,
-  ShoppingBag,
-  Tag,
-  User,
-  Link,
-} from "lucide-react";
+import { Star, Plus, Home, Search, ShoppingBag, Tag, User } from "lucide-react";
+import Link from "next/link"; // ← CERTIFIQUE-SE QUE ESTÁ AQUI
 import { FaqSection } from "../components/features/FaqSection";
 import { GameDetailsPage } from "../components/features/GameCard";
 import { LoginPage } from "../components/features/LoginPage";
@@ -159,15 +151,15 @@ export default function App() {
                 diversão.
               </p>
 
-              <button
-                onClick={() => (!isLoggedIn ? setIsLoginOpen(true) : null)}
-                className="bg-[#FFD23F] text-slate-900 font-black text-xl px-10 py-5 rounded-full border-2 border-slate-900 shadow-[6px_6px_0px_0px_rgba(30,30,46,1)] hover:-translate-y-1 hover:translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(30,30,46,1)] active:translate-y-0 active:translate-x-0 active:shadow-[2px_2px_0px_0px_rgba(30,30,46,1)] transition-all flex items-center justify-center gap-3 group relative z-20"
-              >
-                <span className="bg-white border-2 border-slate-900 rounded-full p-1.5 group-hover:rotate-90 transition-transform duration-500">
-                  <Plus className="w-6 h-6" />
-                </span>
-                QUERO ANUNCIAR AGORA
-              </button>
+              {/* ✅ BOTÃO CORRIGIDO - AGORA VAI PARA /anunciar */}
+              <Link href="/anunciar" className="inline-block">
+                <button className="bg-[#FFD23F] text-slate-900 font-black text-xl px-10 py-5 rounded-full border-2 border-slate-900 shadow-[6px_6px_0px_0px_rgba(30,30,46,1)] hover:-translate-y-1 hover:translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(30,30,46,1)] active:translate-y-0 active:translate-x-0 active:shadow-[2px_2px_0px_0px_rgba(30,30,46,1)] transition-all flex items-center justify-center gap-3 group relative z-20">
+                  <span className="bg-white border-2 border-slate-900 rounded-full p-1.5 group-hover:rotate-90 transition-transform duration-500">
+                    <Plus className="w-6 h-6" />
+                  </span>
+                  QUERO ANUNCIAR AGORA
+                </button>
+              </Link>
             </div>
 
             {/* --- VITRINE PATROCINADA (CARROSSEL GIRATÓRIO ROXO) --- */}
@@ -242,14 +234,16 @@ export default function App() {
           isActive={activeTab === "search"}
           onClick={() => setActiveTab("search")}
         />
+
+        {/* ✅ BOTÃO MOBILE CORRIGIDO */}
         <div className="relative -top-5 group cursor-pointer">
-          <button
-            onClick={() => (!isLoggedIn ? setIsLoginOpen(true) : null)}
-            className="bg-indigo-600 text-white p-4 rounded-2xl border-2 border-slate-900 shadow-[4px_4px_0px_0px_rgba(30,30,46,1)] active:translate-y-1 active:shadow-none transition-all hover:bg-indigo-700"
-          >
-            <Plus className="w-7 h-7 stroke-[3]" />
-          </button>
+          <Link href="/anunciar">
+            <button className="bg-indigo-600 text-white p-4 rounded-2xl border-2 border-slate-900 shadow-[4px_4px_0px_0px_rgba(30,30,46,1)] active:translate-y-1 active:shadow-none transition-all hover:bg-indigo-700">
+              <Plus className="w-7 h-7 stroke-[3]" />
+            </button>
+          </Link>
         </div>
+
         <NavIcon
           icon={ShoppingBag}
           label="Vendas"
@@ -260,16 +254,9 @@ export default function App() {
           icon={User}
           label="Perfil"
           isActive={activeTab === "profile"}
-          onClick={() => (
-            <Link href="/anunciar">
-              <button className="bg-[#FFD23F] text-slate-900 font-black text-xl px-10 py-5 rounded-full border-2 border-slate-900 shadow-[6px_6px_0px_0px_rgba(30,30,46,1)] hover:-translate-y-1 hover:translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(30,30,46,1)] active:translate-y-0 active:translate-x-0 active:shadow-[2px_2px_0px_0px_rgba(30,30,46,1)] transition-all flex items-center justify-center gap-3 group relative z-20">
-                <span className="bg-white border-2 border-slate-900 rounded-full p-1.5 group-hover:rotate-90 transition-transform duration-500">
-                  <Plus className="w-6 h-6" />
-                </span>
-                QUERO ANUNCIAR AGORA
-              </button>
-            </Link>
-          )}
+          onClick={() =>
+            isLoggedIn ? setActiveTab("profile") : setIsLoginOpen(true)
+          }
         />
       </div>
     </div>

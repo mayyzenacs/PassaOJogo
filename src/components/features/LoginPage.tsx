@@ -10,7 +10,6 @@ interface LoginPageProps {
 export const LoginPage = ({ onLogin, onBack }: LoginPageProps) => {
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 animate-in fade-in duration-300">
-      {/* FUNDO SÓLIDO (Sem transparência) com Meeples */}
       <div className="absolute inset-0 bg-[#FDFBF7]">
         <BackgroundDecorations />
       </div>
