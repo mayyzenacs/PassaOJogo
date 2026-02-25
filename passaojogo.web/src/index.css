@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta de Cores Suavizada (Mantendo a identidade) */
+  --color-neo-bg: #f8fafc; /* Off-white mais claro */
+  --color-neo-text: #1e293b; /* Azul marinho escuro em vez de preto puro */
+  --color-neo-indigo: #6366f1; /* Mantém, mas o contexto suaviza */
+  --color-neo-yellow: #facc15; /* Amarelo mais dourado e menos "marca-texto" */
+  --color-neo-emerald: #10b981; /* Mantém */
+  --color-neo-pink: #ec4899; /* Novo: Rosa suave para destaques */
+
+  /* Tipografia */
+  --font-heading: "Outfit", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  /* SOMBRAS SUAVES (Soft Shadows) - O segredo da suavidade */
+  --shadow-soft-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-soft:
+    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-soft-md:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-soft-lg:
+    0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Bordas Finas e Arredondadas */
+  --border-soft: 1px solid #e2e8f0;
+  --radius-soft: 1rem; /* Arredondamento padrão (16px) */
+}
+
+@layer base {
+  body {
+    @apply bg-neo-bg text-neo-text font-body antialiased selection:bg-neo-indigo/20 selection:text-neo-indigo;
+  }
+
+  /* Classes utilitárias para o novo estilo */
+  .card-soft {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-soft hover:shadow-soft-md transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-neo-indigo text-white font-bold px-6 py-3 rounded-xl shadow-soft-sm hover:bg-indigo-600 hover:shadow-soft transition-all active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-neo-text font-bold px-6 py-3 border border-slate-200 rounded-xl shadow-soft-sm hover:bg-slate-50 hover:border-slate-300 transition-all active:scale-95;
+  }
+
+  .badge-soft {
+    @apply px-3 py-1 text-xs font-bold uppercase rounded-full shadow-soft-sm;
+  }
+}
+@import "tailwindcss";
+
+@theme {
+  /* Paleta de Cores Suavizada (Mantendo a identidade) */
+  --color-neo-bg: #f8fafc; /* Off-white mais claro */
+  --color-neo-text: #1e293b; /* Azul marinho escuro em vez de preto puro */
+  --color-neo-indigo: #6366f1; /* Mantém, mas o contexto suaviza */
+  --color-neo-yellow: #facc15; /* Amarelo mais dourado e menos "marca-texto" */
+  --color-neo-emerald: #10b981; /* Mantém */
+  --color-neo-pink: #ec4899; /* Novo: Rosa suave para destaques */
+
+  /* Tipografia */
+  --font-heading: "Outfit", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  /* SOMBRAS SUAVES (Soft Shadows) - O segredo da suavidade */
+  --shadow-soft-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-soft:
+    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-soft-md:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-soft-lg:
+    0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Bordas Finas e Arredondadas */
+  --border-soft: 1px solid #e2e8f0;
+  --radius-soft: 1rem; /* Arredondamento padrão (16px) */
+}
+
+@layer base {
+  body {
+    @apply bg-neo-bg text-neo-text font-body antialiased selection:bg-neo-indigo/20 selection:text-neo-indigo;
+  }
+
+  /* Classes utilitárias para o novo estilo */
+  .card-soft {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-soft hover:shadow-soft-md transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-neo-indigo text-white font-bold px-6 py-3 rounded-xl shadow-soft-sm hover:bg-indigo-600 hover:shadow-soft transition-all active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-neo-text font-bold px-6 py-3 border border-slate-200 rounded-xl shadow-soft-sm hover:bg-slate-50 hover:border-slate-300 transition-all active:scale-95;
+  }
+
+  .badge-soft {
+    @apply px-3 py-1 text-xs font-bold uppercase rounded-full shadow-soft-sm;
+  }
+}
