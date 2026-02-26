@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/passaojogo.api/">
+    <Project Path="passaojogo.api/PassaJogo.Api.csproj" />
+  </Folder>
+  <Folder Name="/PassaOJogo.Domain/">
+    <Project Path="PassaOJogo.Domain/PassaJogo.Domain.csproj" />
+  </Folder>
+  <Folder Name="/PassaOJogo.Tests/">
+    <Project Path="PassaOJogo.Tests/PassaJogo.Tests.csproj" />
+  </Folder>
+</Solution>

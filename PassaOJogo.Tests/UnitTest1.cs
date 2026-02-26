@@ -1,4 +1,4 @@
-﻿namespace PassaJogo.Tests;
+﻿namespace PassaOJogo.Tests;
 
 public class UnitTest1
 {

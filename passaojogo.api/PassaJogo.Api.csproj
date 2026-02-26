@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\PassaJogo.Domain\PassaJogo.Domain.csproj" />
+    <ProjectReference Include="..\PassaOJogo.Domain\PassaOJogo.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

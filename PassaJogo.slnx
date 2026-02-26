@@ -1,7 +1,0 @@
-<Solution>
-  <Folder Name="/passaojogo.api/">
-    <Project Path="passaojogo.api/PassaJogo.Api.csproj" />
-  </Folder>
-  <Project Path="PassaJogo.Domain/PassaJogo.Domain.csproj" />
-  <Project Path="PassaJogo.Tests/PassaJogo.Tests.csproj" />
-</Solution>
