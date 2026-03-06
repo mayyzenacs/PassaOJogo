@@ -6,8 +6,8 @@ export const gamesMock = [
     location: "São Paulo, SP - Vila Mariana",
     image: "https://storage.googleapis.com/ludopedia-posts/bc218_95tc3w.jpg",
     tags: [
+      "minis pintadas",
       "Sleevado",
-      "Lacrado",
       "Insert",
       "Unpuched",
       "Cartas Promocionais",

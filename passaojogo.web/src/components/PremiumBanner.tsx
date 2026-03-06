@@ -32,7 +32,7 @@ export function PremiumBanner() {
 
   // O segredo do "rodar" está no translateX relativo ao índice
   return (
-    <section className="w-full bg-white border-4 border-neo-text shadow-neo-lg overflow-hidden relative">
+    <section className="rounded-lg  w-full bg-white border-2 border-neo-text shadow-neo-lg overflow-hidden relative">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -44,7 +44,7 @@ export function PremiumBanner() {
           >
             {/* Lado Texto */}
             <div
-              className={`flex-1 p-8 md:p-16 flex flex-col justify-center ${banner.color} border-b-4 md:border-b-0 md:border-r-4 border-neo-text`}
+              className={`flex-1 p-8 md:p-16 flex flex-col justify-center ${banner.color} border-b-2 md:border-b-0 md:border-r-2 border-neo-text`}
             >
               <h2 className="text-5xl md:text-7xl font-heading font-black uppercase leading-[0.85] mb-4 text-white drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]">
                 {banner.title}
@@ -52,7 +52,7 @@ export function PremiumBanner() {
               <p className="text-3xl font-black italic mb-8">
                 R$ {banner.price}
               </p>
-              <button className="w-fit bg-white border-4 border-neo-text px-8 py-4 font-black text-xl shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2">
+              <button className="rounded-md w-fit bg-white border-2 border-neo-text px-8 py-4 font-black text-xl shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2">
                 VER JOGO <ArrowUpRight strokeWidth={4} />
               </button>
             </div>
@@ -69,7 +69,7 @@ export function PremiumBanner() {
       </div>
 
       {/* Controles e Badge de Destaque */}
-      <div className="absolute top-0 left-0 z-20 bg-neo-yellow border-r-4 border-b-4 border-neo-text px-4 py-1 font-black italic uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="absolute top-0 left-0 z-20 bg-neo-yellow border-r-4 border-b-4 border-neo-text px-4 py-1 font-black italic uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
         Destaque ★
       </div>
 
@@ -78,7 +78,7 @@ export function PremiumBanner() {
           onClick={() =>
             setCurrent(current === 0 ? BANNERS.length - 1 : current - 1)
           }
-          className="bg-white p-3 border-4 border-neo-text shadow-neo active:shadow-none transition-all"
+          className="rounded-md bg-white p-3 border-2 border-neo-text shadow-neo active:shadow-none transition-all"
         >
           <ChevronLeft strokeWidth={4} />
         </button>
@@ -86,7 +86,7 @@ export function PremiumBanner() {
           onClick={() =>
             setCurrent(current === BANNERS.length - 1 ? 0 : current + 1)
           }
-          className="bg-white p-3 border-4 border-neo-text shadow-neo active:shadow-none transition-all"
+          className="rounded-md bg-white p-3 border-2 border-neo-text shadow-neo active:shadow-none transition-all"
         >
           <ChevronRight strokeWidth={4} />
         </button>

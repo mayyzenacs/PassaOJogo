@@ -9,18 +9,63 @@ import {
   DollarSign,
   X,
   Image as ImageIcon,
+  Search, // Adicionado para a barra de busca
+  Check, // Adicionado para o card de confirmação
 } from "lucide-react";
 import { Navbar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
 import { AddressForm } from "../components/AndressForm";
 
 export default function PostAd() {
+  // --- ESTADOS EXISTENTES ---
   const [selectedStatus, setSelectedStatus] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [phone, setPhone] = useState("");
   const [showHelp, setShowHelp] = useState(false);
 
+  // --- NOVOS ESTADOS PARA A INTEGRAÇÃO COM O CATÁLOGO ---
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCatalogGame, setSelectedCatalogGame] = useState<{
+    id: number;
+    title: string;
+    thumb: string;
+  } | null>(null);
+  const [adTitle, setAdTitle] = useState("");
+
+  // Simulação de busca no Banco/BGG (Num ambiente real, isso viria da sua API C#)
+  const mockCatalogResults = [
+    {
+      id: 101,
+      title: "Mansions of Madness: 2ª Edição",
+      thumb:
+        "https://cf.geekdo-images.com/okM0dq_bEXnbyQTOvHZwlw__micro/img/xP1tG0Bq3E_q8hGZ2S_F0oZ7e5s=/fit-in/64x64/filters:strip_icc()/pic3118622.png",
+    },
+    {
+      id: 102,
+      title: "Mansions of Madness: 1ª Edição",
+      thumb:
+        "https://cf.geekdo-images.com/39hP8n_d6TGu2-G2HIfz1w__micro/img/h7_04hY4-y_Z7s4rB_xN29o-oQk=/fit-in/64x64/filters:strip_icc()/pic924254.jpg",
+    },
+    {
+      id: 103,
+      title: "Catan",
+      thumb:
+        "https://cf.geekdo-images.com/W3BsA1cbO0svvXQ3oWrtCQ__micro/img/1m-X9yv5XzO1-b9w0i0g5rQ6P5k=/fit-in/64x64/filters:strip_icc()/pic2419375.jpg",
+    },
+  ];
+
+  const handleSelectGame = (game: {
+    id: number;
+    title: string;
+    thumb: string;
+  }) => {
+    setSelectedCatalogGame(game); // Salva o ID pro banco
+    setAdTitle(game.title); // Preenche o título do anúncio com o nome oficial
+    setSearchQuery(""); // Limpa a busca
+  };
+
+  // --- HANDLERS EXISTENTES ---
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
     if (value.length <= 11) {
@@ -58,7 +103,7 @@ export default function PostAd() {
 
   const tagOptions = [
     "Sleevado",
-    "Lacrado",
+    "Minis pintadas",
     "Unpuched",
     "Insert",
     "Cartas Promocionais",
@@ -74,51 +119,133 @@ export default function PostAd() {
           to="/"
           className="inline-flex items-center gap-2 font-black uppercase text-xs mb-8 group"
         >
-          <div className="p-2 border-2 border-neo-text group-hover:bg-neo-yellow transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+          <div className="p-2 group-hover:bg-neo-yellow transition-all">
             <ChevronLeft size={16} strokeWidth={4} />
           </div>
           <span>Cancelar e voltar</span>
         </Link>
 
-        <header className="mb-12">
-          <h1 className="text-5xl font-heading font-black uppercase tracking-tighter leading-none mb-4">
+        <header className="mb-6">
+          <h1 className="text-5xl font-heading font-black uppercase tracking-tighter leading-none">
             Anunciar <span className="text-neo-indigo italic">Desapego</span>
           </h1>
         </header>
 
         <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
-          <section className="bg-white border-4 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)] space-y-6">
+          <section className="rounded-md bg-white border-2 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)] space-y-6">
             <div className="flex items-center gap-3 mb-2">
               <Package className="text-neo-indigo" size={24} strokeWidth={3} />
               <h2 className="text-xl font-black uppercase tracking-tight">
                 O que você está vendendo?
               </h2>
             </div>
+
             <div className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs font-black uppercase text-slate-500">
-                  Título do Jogo
-                </label>
-                <input
-                  type="text"
-                  placeholder="Ex: Catan - Edição de Aniversário"
-                  className="w-full px-4 py-4 border-2 border-neo-text font-bold outline-none focus:bg-indigo-50 transition-all text-lg"
-                />
-              </div>
-              <div className="space-y-1">
+              {!selectedCatalogGame ? (
+                <div className="space-y-1 relative">
+                  <label className="text-xs font-black uppercase text-slate-500">
+                    Busque o jogo oficial no catálogo
+                  </label>
+                  <div className="rounded-md relative border-2 border-neo-text focus-within:ring-2 focus-within:ring-neo-indigo transition-all flex bg-white">
+                    <div className="p-4 text-slate-400">
+                      <Search size={20} strokeWidth={3} />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Ex: Mansions of Madness, Catan..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full py-4 pr-4 font-bold outline-none bg-transparent"
+                    />
+                  </div>
+
+                  {searchQuery.length > 2 && (
+                    <div className="absolute z-10 w-full mt-1 bg-white border-2 border-neo-text shadow-neo flex flex-col">
+                      {mockCatalogResults.map((game) => (
+                        <button
+                          key={game.id}
+                          type="button"
+                          onClick={() => handleSelectGame(game)}
+                          className="flex items-center gap-4 p-3 hover:bg-neo-yellow/20 border-b-2 border-slate-100 text-left transition-colors"
+                        >
+                          <img
+                            src={game.thumb}
+                            alt="Capa"
+                            className="rounded-md w-10 h-10 border-2 border-neo-text object-cover"
+                          />
+                          <span className="font-bold text-sm uppercase">
+                            {game.title}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* FLUXO B: Se JÁ ESCOLHEU, mostra Card de Confirmação + Campo de Título Editável */
+                <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-300">
+                  {/* Card do Catálogo */}
+                  <div className="rounded-md bg-emerald-50 border-2 border-emerald-500 p-4 flex justify-between items-center">
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={selectedCatalogGame.thumb}
+                        alt="Capa"
+                        className="rounded-md w-12 h-12 border-2 border-neo-text object-cover"
+                      />
+                      <div>
+                        <div className="flex items-center gap-2 text-emerald-700">
+                          <Check size={16} strokeWidth={4} />
+                          <span className="text-[10px] font-black uppercase tracking-widest">
+                            Vinculado ao Catálogo
+                          </span>
+                        </div>
+                        <p className="font-bold uppercase text-sm">
+                          {selectedCatalogGame.title}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCatalogGame(null)}
+                      className="text-[10px] font-black uppercase text-slate-500 hover:text-red-500 transition-colors underline"
+                    >
+                      Trocar Jogo
+                    </button>
+                  </div>
+
+                  {/* Campo de Título do Anúncio (Editável) */}
+                  <div className="space-y-1">
+                    <label className="text-xs font-black uppercase text-slate-500 flex justify-between">
+                      <span>Título do seu anúncio</span>
+                      <span className="text-[10px] text-neo-indigo italic">
+                        Pode editar titulo
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      value={adTitle}
+                      onChange={(e) => setAdTitle(e.target.value)}
+                      className="rounded-md w-full px-4 py-4 border-2 border-neo-text font-black outline-none focus:bg-indigo-50 transition-all text-lg"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* Descrição fica logo abaixo, independentemente do fluxo */}
+              <div className="space-y-1 pt-2">
                 <label className="text-xs font-black uppercase text-slate-500">
                   Descrição Detalhada
                 </label>
                 <textarea
                   rows={4}
                   placeholder="Descreva o estado dos componentes, da caixa e se há itens faltantes..."
-                  className="w-full px-4 py-4 border-2 border-neo-text font-bold outline-none focus:bg-indigo-50 transition-all resize-none"
+                  className="rounded-md w-full px-4 py-4 border-2 border-neo-text font-bold outline-none focus:bg-indigo-50 transition-all resize-none"
                 />
               </div>
             </div>
           </section>
 
-          <section className="bg-white border-4 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.1)] space-y-8">
+          <section className="rounded-md bg-white border-2 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.1)] space-y-8">
             <div className="flex items-center gap-3 mb-2">
               <CheckCircle2
                 className="text-neo-indigo"
@@ -178,7 +305,7 @@ export default function PostAd() {
             </div>
           </section>
 
-          <section className="bg-white border-4 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(250,204,21,0.2)]">
+          <section className="rounded-md bg-white border-2 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(250,204,21,0.2)]">
             <div className="flex items-center gap-3 mb-6">
               <Camera className="text-neo-yellow" size={24} strokeWidth={3} />
               <h2 className="text-xl font-black uppercase tracking-tight">
@@ -186,7 +313,7 @@ export default function PostAd() {
               </h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <label className="aspect-square border-4 border-dashed border-slate-200 flex flex-col items-center justify-center gap-2 hover:border-neo-indigo hover:bg-indigo-50 transition-all text-slate-400 hover:text-neo-indigo cursor-pointer">
+              <label className="rounded-md aspect-square border-4 border-dashed border-slate-200 flex flex-col items-center justify-center gap-2 hover:border-neo-indigo hover:bg-indigo-50 transition-all text-slate-400 hover:text-neo-indigo cursor-pointer">
                 <ImageIcon size={32} />
                 <span className="text-[10px] font-black uppercase">
                   Adicionar
@@ -222,7 +349,7 @@ export default function PostAd() {
           </section>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <section className="bg-white border-4 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(16,185,129,0.2)]">
+            <section className="rounded-md bg-white border-2 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(16,185,129,0.2)]">
               <div className="flex items-center gap-3 mb-6">
                 <DollarSign
                   className="text-neo-emerald"
@@ -240,12 +367,12 @@ export default function PostAd() {
                 <input
                   type="number"
                   placeholder="0,00"
-                  className="w-full pl-14 pr-4 py-4 border-2 border-neo-text font-black text-4xl outline-none focus:bg-emerald-50 transition-all"
+                  className="rounded-md w-full pl-14 pr-4 py-4 border-2 border-neo-text font-black text-4xl outline-none focus:bg-emerald-50 transition-all"
                 />
               </div>
             </section>
 
-            <section className="bg-white border-4 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)] space-y-6">
+            <section className="rounded-md bg-white border-2 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)] space-y-6">
               <AddressForm />
 
               <div className="pt-4 space-y-3">
@@ -263,7 +390,7 @@ export default function PostAd() {
                 </div>
 
                 {showHelp && (
-                  <div className="bg-neo-yellow/10 border-2 border-neo-text p-3 text-[10px] font-bold leading-tight animate-in fade-in slide-in-from-top-1">
+                  <div className="rounded-md bg-neo-yellow/10 border-2 border-neo-text p-3 text-[10px] font-bold leading-tight animate-in fade-in slide-in-from-top-1">
                     <p>
                       <span className="text-neo-indigo uppercase">
                         Privacidade:
@@ -275,7 +402,7 @@ export default function PostAd() {
                   </div>
                 )}
 
-                <div className="relative flex border-2 border-neo-text overflow-hidden bg-white focus-within:ring-2 focus-within:ring-neo-indigo transition-all">
+                <div className="rounded-md relative flex border-2 border-neo-text overflow-hidden bg-white focus-within:ring-2 focus-within:ring-neo-indigo transition-all">
                   <span className="flex items-center justify-center px-3 bg-slate-50 border-r-2 border-neo-text font-black text-ms text-slate-400">
                     +55
                   </span>
@@ -294,7 +421,7 @@ export default function PostAd() {
             </section>
           </div>
 
-          <button className="w-full bg-neo-yellow border-4 border-neo-text py-6 font-black text-2xl uppercase shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-4">
+          <button className="rounded-md w-full bg-neo-yellow border-2 border-neo-text py-6 font-black text-2xl uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-4">
             Publicar Desapego <Send size={24} strokeWidth={3} />
           </button>
         </form>

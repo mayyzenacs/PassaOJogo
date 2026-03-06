@@ -25,7 +25,7 @@ export default function Login() {
 
       {/* Main sem o -mt-12 que quebrava o layout */}
       <main className="flex-1 flex items-center justify-center p-6 pb-20">
-        <div className="w-full max-w-md bg-white border-4 border-neo-text p-10 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.2)]">
+        <div className="rounded-md w-full max-w-md bg-white border-2 border-neo-text p-10 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.2)]">
           <header className="text-center mb-10">
             <h1 className="text-4xl font-heading font-black uppercase tracking-tighter mb-2">
               Acesse sua Conta
@@ -35,7 +35,7 @@ export default function Login() {
             </p>
           </header>
 
-          <button className="w-full flex items-center justify-center gap-3 border-4 border-neo-text py-4 font-black uppercase text-sm hover:bg-slate-50 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] active:shadow-none active:translate-x-1 active:translate-y-1 mb-8">
+          <button className="rounded-md w-full flex items-center justify-center gap-3 border-2 border-neo-text py-4 font-black uppercase text-sm hover:bg-slate-50 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] active:shadow-none active:translate-x-1 active:translate-y-1 mb-8">
             <svg width={20} height={20} viewBox="0 0 24 24" fill="currentColor">
               <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.92 3.32-2.12 4.4-1.36 1.36-3.44 2.4-6.48 2.4-5.08 0-9.16-4.12-9.16-9.16s4.08-9.16 9.16-9.16c2.68 0 4.88.92 6.52 2.48l2.32-2.32C18.24 1.08 15.48 0 12.48 0 5.64 0 0 5.64 0 12.48S5.64 24.96 12.48 24.96c3.68 0 6.64-1.2 8.96-3.6 2.32-2.32 3-5.56 3-8.16 0-.6-.04-1.2-.12-1.76h-11.84z" />
             </svg>
@@ -64,7 +64,7 @@ export default function Login() {
                 <input
                   type="email"
                   placeholder="exemplo@email.com"
-                  className="w-full pl-12 pr-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-indigo-50 transition-all"
+                  className="rounded-md w-full pl-12 pr-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-indigo-50 transition-all"
                 />
               </div>
             </div>
@@ -87,12 +87,12 @@ export default function Login() {
                 <input
                   type="password"
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-yellow-50 transition-all"
+                  className="rounded-md w-full pl-12 pr-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-yellow-50 transition-all"
                 />
               </div>
             </div>
 
-            <button className="w-full bg-neo-indigo text-white border-4 border-neo-text py-4 font-black text-lg uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-3 mt-4">
+            <button className="rounded-md w-full bg-neo-indigo text-white border-2 border-neo-text py-4 font-black text-lg uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-3 mt-4">
               Acessar Conta <LogIn size={20} strokeWidth={3} />
             </button>
           </form>

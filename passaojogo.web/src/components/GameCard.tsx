@@ -27,10 +27,10 @@ export default function GameCard({
   };
 
   return (
-    <article className="group bg-white border-4 border-neo-text shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+    <article className="rounded-md group bg-white border-2 border-neo-text shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
       <Link
         to={`/anuncio/${id}`}
-        className="block h-64 border-b-4 border-neo-text overflow-hidden"
+        className="block h-64 border-b-2 border-neo-text overflow-hidden"
       >
         <img
           src={image}
@@ -74,7 +74,7 @@ export default function GameCard({
           </div>
           <Link
             to={`/anuncio/${id}`}
-            className="bg-neo-indigo text-white p-4 border-4 border-neo-text shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+            className="rounded-md bg-neo-indigo text-white p-4 border-2 border-neo-text shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
           >
             <ArrowRight size={24} strokeWidth={4} />
           </Link>

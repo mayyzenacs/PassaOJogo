@@ -43,7 +43,7 @@ export function AddressForm() {
             onChange={(e) => setCep(e.target.value.replace(/\D/g, ""))}
             onBlur={handleCEPBlur}
             placeholder="00000000"
-            className="w-full pl-12 pr-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-blue-50 transition-all"
+            className="rounded-md w-full pl-12 pr-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-blue-50 transition-all"
           />
           {loading && (
             <Loader2
@@ -55,7 +55,7 @@ export function AddressForm() {
       </div>
 
       {address.cidade && (
-        <div className="p-4 bg-slate-50 border-2 border-dashed border-slate-300">
+        <div className="rounded-md p-4 bg-slate-50 border-2 border-dashed border-slate-300">
           <p className="text-xs font-bold text-slate-500 uppercase tracking-tighter">
             Localizado:
           </p>

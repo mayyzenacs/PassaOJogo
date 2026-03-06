@@ -43,7 +43,7 @@ export default function Home() {
         <header className="py-20">
           <h1 className="text-6xl md:text-8xl font-heading font-black uppercase leading-[0.85] mb-8 tracking-tighter">
             Gire o <br />
-            <span className="bg-neo-yellow px-4 border-5 border-neo-text inline-block -rotate-2">
+            <span className="bg-neo-yellow px-4 border-3 border-neo-text inline-block -rotate-2">
               Estoque
             </span>
             <span className="block mt-2">JOGUE MAIS</span>

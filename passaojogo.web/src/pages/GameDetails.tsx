@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { ShieldCheck, MapPin, ChevronLeft, MessageCircle } from "lucide-react";
 import { Navbar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
-import { gamesMock } from "../mocks/games"; // CERTIFIQUE-SE QUE O STATUS ESTÁ NO MOCK
+import { gamesMock } from "../mocks/games";
 
 export default function GameDetails() {
   const { id } = useParams();
@@ -37,7 +37,7 @@ export default function GameDetails() {
   const getTagStyle = (tag: string) => {
     const t = tag.toLowerCase();
 
-    if (t.includes("lacrado"))
+    if (t.includes("minis pintadas"))
       return "bg-yellow-100 text-yellow-800 border-yellow-400 shadow-yellow-200";
 
     if (t.includes("sleevado"))
@@ -68,10 +68,14 @@ export default function GameDetails() {
           <ChevronLeft strokeWidth={4} size={16} /> Voltar para o catálogo
         </Link>
 
+        <h1 className="text-4xl font-heading font-black uppercase leading-none mb-4">
+          {game.title}
+        </h1>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* LADO ESQUERDO: GALERIA E DESCRIÇÃO */}
           <div className="lg:col-span-7 space-y-8">
-            <div className="border-4 border-neo-text bg-white shadow-neo overflow-hidden">
+            <div className="rounded-md border-2 border-neo-text bg-white shadow-neo overflow-hidden">
               <img
                 src={game.image}
                 alt={game.title}
@@ -79,7 +83,7 @@ export default function GameDetails() {
               />
             </div>
 
-            <div className="bg-white border-4 border-neo-text p-8 shadow-neo">
+            <div className="rounded-md bg-white border-2 border-neo-text p-8 shadow-neo">
               <h2 className="text-3xl font-heading font-black uppercase mb-6">
                 Descrição do Produto
               </h2>
@@ -91,7 +95,7 @@ export default function GameDetails() {
 
           {/* LADO DIREITO: INFO DE COMPRA */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-white border-4 border-neo-text p-8 shadow-neo-lg">
+            <div className="rounded-md bg-white border-2 border-neo-text p-8 shadow-neo-lg">
               {/* TAGS DINÂMICAS */}
               <div className="flex flex-wrap gap-2 mb-8">
                 {game.tags.map((tag) => (
@@ -104,10 +108,6 @@ export default function GameDetails() {
                 ))}
               </div>
 
-              <h1 className="text-4xl font-heading font-black uppercase leading-none mb-4">
-                {game.title}
-              </h1>
-
               <div className="flex items-center gap-2 mb-8 opacity-70">
                 <MapPin size={18} strokeWidth={3} />
                 <span className="font-bold">{game.location}</span>
@@ -115,7 +115,7 @@ export default function GameDetails() {
 
               {/* STATUS/ESTADO - AQUI ESTÁ O QUE VOCÊ PEDIU */}
               <div className="flex mb-6">
-                <span className="bg-neo-yellow border-2 border-neo-text px-3 py-1 text-sm font-black uppercase">
+                <span className="bg-neo-yellow rounded-md border-2 border-neo-text px-3 py-1 text-sm font-black uppercase">
                   {game.status}
                 </span>
               </div>
@@ -128,16 +128,16 @@ export default function GameDetails() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full bg-neo-emerald border-4 border-neo-text py-4 font-black text-2xl shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase"
+                className="flex items-center justify-center gap-3 w-full bg-neo-emerald rounded-md border-2 border-neo-text py-4 font-black text-2xl shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase"
               >
                 <MessageCircle size={28} strokeWidth={3} /> Comprar no Whatsapp
               </a>
             </div>
 
             {/* CARD VENDEDOR */}
-            <div className="bg-neo-emerald text-white border-4 border-neo-text p-6 shadow-neo">
+            <div className="bg-neo-emerald text-white rounded-md border-2 border-neo-text p-6 shadow-neo">
               <div className="flex items-center gap-4 mb-6">
-                <div className="h-16 w-16 bg-neo-yellow border-4 border-neo-text rounded-full flex items-center justify-center text-neo-text font-black text-2xl">
+                <div className="h-16 w-16 bg-neo-yellow border-2 border-neo-text rounded-full flex items-center justify-center text-neo-text font-black text-2xl">
                   FA
                 </div>
                 <div>
