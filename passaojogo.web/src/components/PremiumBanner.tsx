@@ -30,9 +30,8 @@ export function PremiumBanner() {
     return () => clearInterval(timer);
   }, []);
 
-  // O segredo do "rodar" está no translateX relativo ao índice
   return (
-    <section className="rounded-lg  w-full bg-white border-2 border-neo-text shadow-neo-lg overflow-hidden relative">
+    <section className="mx-auto max-w-fit rounded-lg w-full bg-white border-2 border-neo-text shadow-neo-lg overflow-hidden relative">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -40,9 +39,8 @@ export function PremiumBanner() {
         {BANNERS.map((banner) => (
           <div
             key={banner.id}
-            className="min-w-full h-100 md:h-125 flex flex-col md:flex-row"
+            className="min-w-full h-64 md:h-80 flex flex-col md:flex-row"
           >
-            {/* Lado Texto */}
             <div
               className={`flex-1 p-8 md:p-16 flex flex-col justify-center ${banner.color} border-b-2 md:border-b-0 md:border-r-2 border-neo-text`}
             >

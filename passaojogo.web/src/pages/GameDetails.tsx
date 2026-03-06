@@ -7,10 +7,8 @@ import { gamesMock } from "../mocks/games";
 export default function GameDetails() {
   const { id } = useParams();
 
-  // Busca o jogo no mock compartilhado
   const game = gamesMock.find((g) => g.id.toString() === id);
 
-  // Fallback de segurança (Guard Clause)
   if (!game) {
     return (
       <div className="min-h-screen bg-neo-bg flex flex-col items-center justify-center font-body">
@@ -27,8 +25,7 @@ export default function GameDetails() {
     );
   }
 
-  // Configuração do Link do WhatsApp Dinâmico
-  const whatsappNumber = "5511999999999"; // No futuro, virá de game.sellerPhone
+  const whatsappNumber = "5511999999999";
   const text = encodeURIComponent(
     `Olá! Tenho interesse no jogo "${game.title}" anunciado por R$ ${game.price}. Ainda está disponível?`,
   );
@@ -73,7 +70,6 @@ export default function GameDetails() {
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* LADO ESQUERDO: GALERIA E DESCRIÇÃO */}
           <div className="lg:col-span-7 space-y-8">
             <div className="rounded-md border-2 border-neo-text bg-white shadow-neo overflow-hidden">
               <img
@@ -93,10 +89,8 @@ export default function GameDetails() {
             </div>
           </div>
 
-          {/* LADO DIREITO: INFO DE COMPRA */}
           <div className="lg:col-span-5 space-y-8">
             <div className="rounded-md bg-white border-2 border-neo-text p-8 shadow-neo-lg">
-              {/* TAGS DINÂMICAS */}
               <div className="flex flex-wrap gap-2 mb-8">
                 {game.tags.map((tag) => (
                   <span
@@ -113,7 +107,6 @@ export default function GameDetails() {
                 <span className="font-bold">{game.location}</span>
               </div>
 
-              {/* STATUS/ESTADO - AQUI ESTÁ O QUE VOCÊ PEDIU */}
               <div className="flex mb-6">
                 <span className="bg-neo-yellow rounded-md border-2 border-neo-text px-3 py-1 text-sm font-black uppercase">
                   {game.status}
@@ -134,7 +127,6 @@ export default function GameDetails() {
               </a>
             </div>
 
-            {/* CARD VENDEDOR */}
             <div className="bg-neo-emerald text-white rounded-md border-2 border-neo-text p-6 shadow-neo">
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-16 w-16 bg-neo-yellow border-2 border-neo-text rounded-full flex items-center justify-center text-neo-text font-black text-2xl">
@@ -163,7 +155,6 @@ export default function GameDetails() {
               </div>
             </div>
 
-            {/* SEGURANÇA */}
             <div className="bg-white border-4 border-neo-text p-6 shadow-neo border-l-12 border-l-neo-yellow">
               <div className="flex items-center gap-3 mb-4 text-neo-text">
                 <ShieldCheck size={24} strokeWidth={3} />

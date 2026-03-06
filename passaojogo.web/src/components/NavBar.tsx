@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export function Navbar() {
   return (
     <nav className="flex flex-col md:flex-row justify-between items-center px-8 py-6 border-b-2 border-neo-text bg-white sticky top-0 z-50 gap-6">
-      {/* Branding - Agora com Link para facilitar a volta */}
       <Link
         to="/"
         className="text-3xl font-heading font-black tracking-tighter uppercase whitespace-nowrap hover:text-neo-indigo transition-colors"
@@ -12,8 +11,7 @@ export function Navbar() {
         Passa<span className="text-neo-indigo">O</span>Jogo
       </Link>
 
-      {/* Barra de Busca - Ocupa o centro */}
-      <div className="rounded-md flex w-full max-w-xl border-2 border-neo-text shadow-neo overflow-hidden">
+      <div className="flex w-full max-w-2xl rounded-md border-2 border-neo-text shadow-neo overflow-hidden">
         <input
           type="text"
           placeholder="Busque por Catan, Terraforming Mars..."
@@ -24,16 +22,13 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Grupo de Ações do Usuário */}
       <div className="flex items-center gap-4">
-        {/* ANUNCIAR: Estilo "Primary" - Máximo destaque */}
         <Link
           to="/anunciar"
-          className="rounded-md bg-neo-yellow border-2 border-neo-text px-6 py-2 font-black shadow-neo active:shadow-none active:translate-x-1 active:translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap uppercase italic text-sm"
+          className="bg-neo-yellow rounded-md border-2 border-neo-text px-6 py-2 font-black shadow-neo active:shadow-none active:translate-x-1 active:translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap uppercase italic text-sm"
         >
           Anunciar <Plus size={20} strokeWidth={4} />
         </Link>
-        {/* Entrar: Estilo "Secondary" - Menos peso visual */}
         <Link
           to="/login"
           className="flex items-center font-bold hover:text-neo-indigo transition-all group"
