@@ -30,7 +30,7 @@ export default function GameCard({
     <article className="rounded-md group bg-white border-2 border-neo-text shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
       <Link
         to={`/anuncio/${id}`}
-        className="block h-64 border-b-2 border-neo-text overflow-hidden"
+        className="block h-48 border-b-2 border-neo-text overflow-hidden"
       >
         <img
           src={image}
@@ -39,8 +39,8 @@ export default function GameCard({
         />
       </Link>
 
-      <div className="p-6">
-        <h3 className="text-2xl font-heading font-black uppercase mb-2 tracking-tighter">
+      <div className="p-4">
+        <h3 className="text-lg font-heading font-black uppercase mb-2 tracking-tighter">
           {title}
         </h3>
 
@@ -68,13 +68,13 @@ export default function GameCard({
           )}
         </div>
 
-        <div className="flex justify-between items-end border-t-2 border-slate-100 pt-4">
+        <div className="flex justify-between items-end border-t-2 border-slate-100 pt-2">
           <div className="flex flex-col">
-            <span className="text-4xl font-black italic">R$ {price}</span>
+            <span className="text-3xl font-black italic">R$ {price}</span>
           </div>
           <Link
             to={`/anuncio/${id}`}
-            className="rounded-md bg-neo-indigo text-white p-4 border-2 border-neo-text shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+            className="rounded-md bg-neo-indigo text-white p-2 border-2 border-neo-text shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
           >
             <ArrowRight size={24} strokeWidth={4} />
           </Link>
