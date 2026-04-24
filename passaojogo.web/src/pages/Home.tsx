@@ -3,14 +3,12 @@ import { PremiumBanner, type BannerItem } from "../components/PremiumBanner";
 import { Footer } from "../components/Footer";
 import GameCard from "../components/GameCard";
 
-// --- MOCK DE BANNERS (O que aparece no topo, sangria total) ---
 const BANNER_ITEMS: BannerItem[] = [
   {
     id: 1,
     title: "Ark Nova: Nova Era",
     price: "580,00",
-    image:
-      "https://images.unsplash.com/photo-1610812384504-436697b09325?q=80&w=1600",
+    image: "https://img.olx.com.br/images/54/547637639485064.jpg",
     color: "bg-emerald-900",
   },
   {
@@ -18,20 +16,18 @@ const BANNER_ITEMS: BannerItem[] = [
     title: "Brass Birmingham",
     price: "620,00",
     image:
-      "https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=1600",
+      "https://unspielbar.com/cdn/shop/files/UN_Brass_Birmingham_SHOP_BRASS_BIRMINGHAM_RETAIL_Insert_Detail_03_UNSPIELBAR.com.jpg?v=1745657487&width=1486",
     color: "bg-zinc-900",
   },
   {
     id: 3,
     title: "Spirit Island",
     price: "490,00",
-    image:
-      "https://images.unsplash.com/photo-1606167668584-78701c57f13d?q=80&w=1600",
+    image: "https://img.olx.com.br/images/15/154625742244161.jpg",
     color: "bg-blue-900",
   },
 ];
 
-// --- MOCK DE JOGOS (O que aparece no grid centralizado) ---
 const GAMES_MOCK = [
   {
     id: 1,
@@ -70,19 +66,16 @@ const GAMES_MOCK = [
   },
 ];
 
-// --- COMPONENTE INTERNO: Barra de Anúncio Superior ---
 const TopAnnouncement = () => (
-  <div className="bg-neo-yellow border-b-4 border-neo-text py-3 px-4 z-40 relative">
+  <div className="bg-indigo-300 border-b-4 border-neo-text py-3 px-4 z-40 relative">
     <div className="max-w-7xl mx-auto flex items-center justify-between">
       <h1 className="text-xl md:text-2xl font-heading font-black uppercase tracking-tighter">
-        Gire o Estoque — <span className="text-neo-indigo">Jogue Mais</span>
+        Gire o Estoque — <span className="text-white">Jogue Mais!</span>
       </h1>
-      <p className="hidden md:block font-bold text-sm border-l-4 border-neo-indigo pl-3 uppercase">
-        Compre, venda e troque na maior comunidade do Brasil.
+      <p className="hidden md:block text-black font-bold text-sm border-l-4 border-neo-indigo pl-3 uppercase">
+        compre, venda e troque jogos de tabuleiro na primeira comunidade de
+        venda de boardgames do brasil
       </p>
-      <button className="bg-white px-4 py-1 text-xs font-black uppercase border-2 border-neo-text shadow-[2px_2px_0_0_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all">
-        Assine Premium
-      </button>
     </div>
   </div>
 );
@@ -90,18 +83,12 @@ const TopAnnouncement = () => (
 export default function Home() {
   return (
     <div className="min-h-screen bg-neo-bg text-neo-text">
-      {/* 1. Navbar (Lógica de Navegação) */}
       <Navbar />
 
-      {/* 2. TopAnnouncement (Identidade e Proposta de Valor) */}
       <TopAnnouncement />
 
-      {/* 3. PremiumBanner (Destaque Visual Full-Width) 
-          Note que ele não está dentro de nenhuma div limitadora.
-      */}
       <PremiumBanner items={BANNER_ITEMS} />
 
-      {/* 4. Conteúdo Centralizado (Grid de Jogos) */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <section className="py-20">
           <div className="flex items-center justify-between mb-12">

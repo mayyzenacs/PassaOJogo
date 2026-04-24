@@ -15,7 +15,6 @@ import { AddressForm } from "../components/AndressForm";
 export default function Profile() {
   const [activeTab, setActiveTab] = useState("anuncios");
 
-  // Mock de anúncios do usuário
   const myAds = [
     {
       id: 1,
@@ -33,7 +32,6 @@ export default function Profile() {
 
       <main className="max-w-7xl mx-auto w-full px-6 py-12 flex-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* SIDEBAR */}
           <aside className="lg:col-span-4 space-y-6">
             <div className="bg-white border-4 border-neo-text p-8 shadow-neo">
               <div className="flex flex-col items-center text-center">
@@ -47,7 +45,6 @@ export default function Profile() {
                   Membro desde Jan 2024
                 </p>
 
-                {/* Alteração 1: Métricas de Avaliação no lugar de Vendas/Ativos */}
                 <div className="grid grid-cols-2 w-full gap-4 border-t-4 border-neo-text pt-6">
                   <div className="text-center">
                     <p className="text-2xl font-black">12</p>
@@ -91,16 +88,13 @@ export default function Profile() {
             </nav>
           </aside>
 
-          {/* CONTEÚDO PRINCIPAL */}
           <section className="lg:col-span-8">
-            {/* TAB: MEUS ANÚNCIOS */}
             {activeTab === "anuncios" && (
               <div className="space-y-6">
                 <div>
                   <h3 className="text-4xl font-heading font-black uppercase tracking-tighter leading-none">
                     Gerenciar Anúncios
                   </h3>
-                  {/* Alteração 2: Texto de resumo abaixo do título */}
                   <p className="text-sm font-bold uppercase text-slate-500 mt-2">
                     2 ativos | 1 pausado
                   </p>
@@ -152,7 +146,6 @@ export default function Profile() {
               </div>
             )}
 
-            {/* TAB: CONFIGURAÇÕES */}
             {activeTab === "config" && (
               <div className="bg-white border-4 border-neo-text p-8 shadow-neo space-y-10">
                 <h3 className="text-4xl font-heading font-black uppercase tracking-tighter leading-none">
@@ -185,7 +178,6 @@ export default function Profile() {
                       />
                     </div>
 
-                    {/* Alteração 3: Adição do campo de Telefone/WhatsApp */}
                     <div className="space-y-1 md:col-span-2">
                       <label className="text-xs font-black uppercase flex items-center gap-2">
                         WhatsApp (DDI + DDD + Número)

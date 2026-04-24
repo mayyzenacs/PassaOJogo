@@ -18,7 +18,6 @@ export default function GameCard({
   image,
   tags = [],
 }: GameCardProps) {
-  // Helper para cores neobrutalistas
   const getTagStyle = (tag: string) => {
     const t = tag.toLowerCase();
     if (t.includes("lacrado")) return "bg-neo-yellow";
@@ -44,13 +43,11 @@ export default function GameCard({
           {title}
         </h3>
 
-        {/* Localização */}
         <div className="flex items-center gap-2 text-sm font-bold opacity-70 mb-3">
           <MapPin size={16} strokeWidth={3} />
           <span>{location}</span>
         </div>
 
-        {/* AS TAGS ABAIXO DA CIDADE */}
         <div className="flex flex-wrap gap-2 mb-6">
           {tags.length > 0 ? (
             tags.map((tag) => (

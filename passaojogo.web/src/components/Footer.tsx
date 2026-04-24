@@ -24,7 +24,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Coluna 2: Links Rápidos */}
           <div className="space-y-6">
             <h4 className="text-xl font-heading font-black uppercase">
               Marketplace
@@ -57,7 +56,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Coluna 3: Institucional */}
           <div className="space-y-6">
             <h4 className="text-xl font-heading font-black uppercase">Sobre</h4>
             <ul className="space-y-3 font-bold">
@@ -88,7 +86,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Coluna 4: Suporte */}
           <div className="space-y-6">
             <h4 className="text-xl font-heading font-black uppercase">Ajuda</h4>
             <button className="rounded-md w-full bg-neo-yellow border-2 border-neo-text p-4 font-black shadow-neo hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all uppercase">
@@ -103,7 +100,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Strip - Ajustada para eliminar o branco excessivo */}
         <div className="pt-8 border-t-2 border-neo-text flex flex-col md:flex-row justify-center items-center gap-4">
           <p className="font-black uppercase text-xs tracking-tighter">
             © 2026 PASSAOJOGO — Desenvolvido por Mayra Pereira

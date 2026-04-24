@@ -9,22 +9,20 @@ import {
   DollarSign,
   X,
   Image as ImageIcon,
-  Search, // Adicionado para a barra de busca
-  Check, // Adicionado para o card de confirmação
+  Search,
+  Check,
 } from "lucide-react";
 import { Navbar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
 import { AddressForm } from "../components/AndressForm";
 
 export default function PostAd() {
-  // --- ESTADOS EXISTENTES ---
   const [selectedStatus, setSelectedStatus] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [phone, setPhone] = useState("");
   const [showHelp, setShowHelp] = useState(false);
 
-  // --- NOVOS ESTADOS PARA A INTEGRAÇÃO COM O CATÁLOGO ---
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCatalogGame, setSelectedCatalogGame] = useState<{
     id: number;
@@ -33,7 +31,6 @@ export default function PostAd() {
   } | null>(null);
   const [adTitle, setAdTitle] = useState("");
 
-  // Simulação de busca no Banco/BGG (Num ambiente real, isso viria da sua API C#)
   const mockCatalogResults = [
     {
       id: 101,
@@ -60,12 +57,11 @@ export default function PostAd() {
     title: string;
     thumb: string;
   }) => {
-    setSelectedCatalogGame(game); // Salva o ID pro banco
-    setAdTitle(game.title); // Preenche o título do anúncio com o nome oficial
-    setSearchQuery(""); // Limpa a busca
+    setSelectedCatalogGame(game);
+    setAdTitle(game.title);
+    setSearchQuery("");
   };
 
-  // --- HANDLERS EXISTENTES ---
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
     if (value.length <= 11) {
@@ -182,9 +178,7 @@ export default function PostAd() {
                   )}
                 </div>
               ) : (
-                /* FLUXO B: Se JÁ ESCOLHEU, mostra Card de Confirmação + Campo de Título Editável */
                 <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-300">
-                  {/* Card do Catálogo */}
                   <div className="rounded-md bg-emerald-50 border-2 border-emerald-500 p-4 flex justify-between items-center">
                     <div className="flex items-center gap-4">
                       <img
@@ -213,7 +207,6 @@ export default function PostAd() {
                     </button>
                   </div>
 
-                  {/* Campo de Título do Anúncio (Editável) */}
                   <div className="space-y-1">
                     <label className="text-xs font-black uppercase text-slate-500 flex justify-between">
                       <span>Título do seu anúncio</span>
@@ -231,7 +224,6 @@ export default function PostAd() {
                 </div>
               )}
 
-              {/* Descrição fica logo abaixo, independentemente do fluxo */}
               <div className="space-y-1 pt-2">
                 <label className="text-xs font-black uppercase text-slate-500">
                   Descrição Detalhada

@@ -5,14 +5,12 @@ import { Footer } from "../components/Footer";
 export default function Login() {
   return (
     <div className="min-h-screen bg-neo-bg flex flex-col font-body">
-      {/* Container de Topo - Fixado para não ser atropelado */}
       <nav className="w-full">
         <div className="max-w-7xl mx-auto px-8 py-10">
           <Link
             to="/"
             className="inline-flex items-center gap-2 font-black uppercase text-xs group transition-all"
           >
-            {/* Um pouco de estilo no ícone para facilitar o clique */}
             <div className="p-2 border-2 border-neo-text group-hover:bg-neo-yellow transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none group-hover:translate-x-px group-hover:translate-y-px">
               <ChevronLeft size={16} strokeWidth={4} />
             </div>
@@ -23,7 +21,6 @@ export default function Login() {
         </div>
       </nav>
 
-      {/* Main sem o -mt-12 que quebrava o layout */}
       <main className="flex-1 flex items-center justify-center p-6 pb-20">
         <div className="rounded-md w-full max-w-md bg-white border-2 border-neo-text p-10 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.2)]">
           <header className="text-center mb-10">

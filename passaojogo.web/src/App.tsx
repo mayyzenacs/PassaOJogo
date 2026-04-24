@@ -22,7 +22,6 @@ function ScrollHandler() {
 }
 
 export default function App() {
-  // Simulação de login (mude para 'true' para testar a página de anúncio)
   const [isLoggedIn] = useState(true);
 
   return (
@@ -35,13 +34,11 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
 
-          {/* LÓGICA DO BOTÃO ANUNCIAR */}
           <Route
             path="/anunciar"
             element={isLoggedIn ? <PostAd /> : <Navigate to="/registrar" />}
           />
 
-          {/* Rota explícita para o registro */}
           <Route path="/registrar" element={<Register />} />
 
           <Route
