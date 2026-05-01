@@ -27,15 +27,15 @@ export default function Profile() {
   ];
 
   return (
-    <div className="min-h-screen bg-neo-bg flex flex-col font-body">
+    <div className="min-h-screen flex flex-col font-body">
       <Navbar />
 
       <main className="max-w-7xl mx-auto w-full px-6 py-12 flex-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <aside className="lg:col-span-4 space-y-6">
-            <div className="bg-white border-4 border-neo-text p-8 shadow-neo">
+            <div className="bg-white rounded-md border-2 border-neo-text p-8 shadow-neo">
               <div className="flex flex-col items-center text-center">
-                <div className="w-32 h-32 bg-neo-yellow border-4 border-neo-text rounded-full flex items-center justify-center mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="w-32 h-32 bg-neo-yellow border-2 border-neo-text rounded-full flex items-center justify-center mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                   <User size={64} strokeWidth={3} />
                 </div>
                 <h2 className="text-2xl font-black uppercase tracking-tighter">
@@ -45,10 +45,10 @@ export default function Profile() {
                   Membro desde Jan 2024
                 </p>
 
-                <div className="grid grid-cols-2 w-full gap-4 border-t-4 border-neo-text pt-6">
+                <div className="grid grid-cols-2 w-full gap-4 border-t-2 border-neo-text pt-6">
                   <div className="text-center">
                     <p className="text-2xl font-black">12</p>
-                    <p className="text-[10px] font-black uppercase text-slate-400 leading-tight">
+                    <p className="text-[10px] font-black uppercase leading-tight">
                       Avaliações
                       <br />
                       Recebidas
@@ -56,7 +56,7 @@ export default function Profile() {
                   </div>
                   <div className="text-center border-l-4 border-neo-text border-dotted">
                     <p className="text-2xl font-black italic">4.8</p>
-                    <p className="text-[10px] font-black uppercase text-slate-400 leading-tight">
+                    <p className="text-[10px] font-black uppercase leading-tight">
                       Média de
                       <br />
                       Estrelas
@@ -66,19 +66,14 @@ export default function Profile() {
               </div>
             </div>
 
-            <nav className="flex flex-col border-4 border-neo-text bg-white shadow-neo overflow-hidden">
+            <nav className="flex flex-col rounded-md border-2 border-neo-text bg-white shadow-neo overflow-hidden">
               <button
                 onClick={() => setActiveTab("anuncios")}
-                className={`flex items-center gap-3 px-6 py-4 font-black uppercase text-sm border-b-4 border-neo-text transition-all ${activeTab === "anuncios" ? "bg-neo-indigo text-white" : "hover:bg-slate-50"}`}
+                className={`flex items-center gap-3 px-6 py-4 font-black uppercase text-sm border-b-2 border-neo-text transition-all ${activeTab === "anuncios" ? "bg-neo-indigo text-white" : "hover:bg-slate-50"}`}
               >
                 <ShoppingBag size={20} /> Meus Anúncios
               </button>
-              <button
-                onClick={() => setActiveTab("favoritos")}
-                className={`flex items-center gap-3 px-6 py-4 font-black uppercase text-sm border-b-4 border-neo-text transition-all ${activeTab === "favoritos" ? "bg-neo-indigo text-white" : "hover:bg-slate-50"}`}
-              >
-                <Heart size={20} /> Favoritos
-              </button>
+
               <button
                 onClick={() => setActiveTab("config")}
                 className={`flex items-center gap-3 px-6 py-4 font-black uppercase text-sm transition-all ${activeTab === "config" ? "bg-neo-indigo text-white" : "hover:bg-slate-50"}`}
@@ -104,10 +99,10 @@ export default function Profile() {
                   {myAds.map((ad) => (
                     <div
                       key={ad.id}
-                      className="bg-white border-4 border-neo-text p-6 shadow-neo flex flex-col md:flex-row justify-between items-center gap-6"
+                      className="bg-white rounded-md border-2 border-neo-text p-6 shadow-neo flex flex-col md:flex-row justify-between items-center gap-6"
                     >
                       <div className="flex items-center gap-6 w-full">
-                        <div className="w-20 h-20 bg-slate-100 border-2 border-neo-text shrink-0"></div>
+                        <div className="w-20 h-20 bg-slate-100 border-2 rounded-md border-neo-text shrink-0"></div>
                         <div>
                           <h4 className="text-xl font-black uppercase leading-none mb-1">
                             {ad.title}
@@ -130,13 +125,13 @@ export default function Profile() {
                         </div>
                       </div>
                       <div className="flex gap-2 w-full md:w-auto">
-                        <button className="flex-1 md:flex-none p-3 border-2 border-neo-text hover:bg-neo-yellow shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+                        <button className="flex-1 md:flex-none p-3 border-2 rounded-md border-neo-text hover:bg-neo-yellow shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                           <Edit3 size={18} />
                         </button>
-                        <button className="flex-1 md:flex-none p-3 border-2 border-neo-text hover:bg-red-500 hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+                        <button className="flex-1 md:flex-none p-3 rounded-md border-2 border-neo-text hover:bg-red-500 hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                           <Trash2 size={18} />
                         </button>
-                        <button className="flex-1 md:flex-none p-3 bg-neo-text text-white border-2 border-neo-text shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                        <button className="flex-1 md:flex-none p-3 rounded-md border-2 border-neo-text hover:bg-black hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                           <ExternalLink size={18} />
                         </button>
                       </div>
@@ -147,7 +142,7 @@ export default function Profile() {
             )}
 
             {activeTab === "config" && (
-              <div className="bg-white border-4 border-neo-text p-8 shadow-neo space-y-10">
+              <div className="bg-white rounded-md border-2 border-neo-text p-8 shadow-neo space-y-10">
                 <h3 className="text-4xl font-heading font-black uppercase tracking-tighter leading-none">
                   Dados da Conta
                 </h3>
@@ -164,7 +159,7 @@ export default function Profile() {
                       <input
                         type="text"
                         defaultValue="Fábio Akita"
-                        className="w-full px-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-indigo-50"
+                        className="w-full px-4 py-3 rounded-md border-2 border-neo-text font-bold outline-none focus:bg-indigo-50"
                       />
                     </div>
                     <div className="space-y-1">
@@ -174,7 +169,7 @@ export default function Profile() {
                       <input
                         type="email"
                         defaultValue="akita@passaojogo.com"
-                        className="w-full px-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-indigo-50"
+                        className="w-full px-4 py-3 rounded-md border-2 border-neo-text font-bold outline-none focus:bg-indigo-50"
                       />
                     </div>
 
@@ -185,7 +180,7 @@ export default function Profile() {
                       <input
                         type="tel"
                         placeholder="Ex: 5511999999999"
-                        className="w-full px-4 py-3 border-2 border-neo-text font-bold outline-none focus:bg-green-50"
+                        className="w-full px-4 py-3 rounded-md border-2 border-neo-text font-bold outline-none focus:bg-green-50"
                       />
                       <p className="text-[10px] font-bold text-slate-400 italic">
                         Obrigatório para receber propostas de compra.
@@ -197,7 +192,7 @@ export default function Profile() {
                     <AddressForm />
                   </div>
 
-                  <button className="bg-neo-emerald text-white border-4 border-neo-text px-8 py-4 font-black uppercase shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                  <button className="bg-neo-emerald text-white border-2 rounded-md  border-neo-text px-8 py-4 font-black uppercase shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                     Salvar Alterações
                   </button>
                 </form>

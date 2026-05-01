@@ -25,7 +25,7 @@ export function Navbar() {
       <div className="flex items-center gap-4">
         <Link
           to="/anunciar"
-          className="bg-neo-yellow rounded-md border-2 border-neo-text px-6 py-2 font-black shadow-neo active:shadow-none active:translate-x-1 active:translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap uppercase italic text-sm"
+          className="bg-neo-yellow rounded-md border-2 border-neo-text px-4 py-2 font-black shadow-neo active:shadow-none active:translate-x-1 active:translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap uppercase italic text-sm"
         >
           Anunciar <Plus size={20} strokeWidth={4} />
         </Link>
@@ -33,7 +33,7 @@ export function Navbar() {
           to="/login"
           className="flex items-center font-bold hover:text-neo-indigo transition-all group"
         >
-          <div className="p-2 border-2 border-transparent group-hover:border-neo-indigo transition-all">
+          <div className="p-2 group-hover:border-neo-indigo transition-all">
             <User size={20} strokeWidth={3} />
           </div>
           <span className="hidden lg:inline uppercase text-sm tracking-tight">
