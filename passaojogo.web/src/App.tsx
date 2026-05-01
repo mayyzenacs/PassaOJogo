@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PostAd from "./pages/PostAd";
 import Profile from "./pages/Profile";
+import AdPublished from "./pages/AdPublished";
 
 function ScrollHandler() {
   const { pathname } = useLocation();
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/anuncio/:id" element={<GameDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/anuncio/publicado" element={<AdPublished />} />
 
           <Route
             path="/anunciar"

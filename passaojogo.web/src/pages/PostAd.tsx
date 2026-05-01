@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   ChevronLeft,
   Package,
@@ -51,6 +51,16 @@ export default function PostAd() {
         "https://cf.geekdo-images.com/W3BsA1cbO0svvXQ3oWrtCQ__micro/img/1m-X9yv5XzO1-b9w0i0g5rQ6P5k=/fit-in/64x64/filters:strip_icc()/pic2419375.jpg",
     },
   ];
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const fakeId = Date.now().toString();
+
+    navigate(`/anuncio/publicado?id=${fakeId}`);
+  };
 
   const handleSelectGame = (game: {
     id: number;
@@ -127,7 +137,7 @@ export default function PostAd() {
           </h1>
         </header>
 
-        <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-10" onSubmit={handleSubmit}>
           <section className="rounded-md bg-white border-2 border-neo-text p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)] space-y-6">
             <div className="flex items-center gap-3 mb-2">
               <Package className="text-neo-indigo" size={24} strokeWidth={3} />

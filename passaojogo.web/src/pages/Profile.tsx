@@ -3,7 +3,6 @@ import {
   User,
   Settings,
   ShoppingBag,
-  Heart,
   Edit3,
   Trash2,
   ExternalLink,
