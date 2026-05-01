@@ -11,7 +11,7 @@ export default function Login() {
             to="/"
             className="inline-flex items-center gap-2 font-black uppercase text-xs group transition-all"
           >
-            <div className="p-2 border-2 border-neo-text group-hover:bg-neo-yellow transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none group-hover:translate-x-px group-hover:translate-y-px">
+            <div className="p-2  group-hover:bg-neo-yellow transition-all  group-hover:shadow-none group-hover:translate-x-px group-hover:translate-y-px">
               <ChevronLeft size={16} strokeWidth={4} />
             </div>
             <span className="group-hover:text-neo-indigo transition-colors">
